@@ -35,6 +35,11 @@ const Index = () => {
     }
   }, []);
 
+  // Handle cache item deletion
+  const handleCacheItemDeleted = useCallback(() => {
+    fetchData();
+  }, [fetchData]);
+
   // Initial data fetch
   useEffect(() => {
     fetchData();
@@ -132,7 +137,10 @@ const Index = () => {
           </div>
 
           <div className="lg:col-span-4 md:col-span-2">
-            <CacheItemsTable keysWithDetails={cacheData.keys_with_details} />
+            <CacheItemsTable 
+              keysWithDetails={cacheData.keys_with_details} 
+              onItemDeleted={handleCacheItemDeleted} 
+            />
           </div>
         </div>
       ) : (

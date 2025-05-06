@@ -55,6 +55,36 @@ export const fetchCacheData = async (): Promise<CacheData> => {
   }
 };
 
+// New function to delete a cache item
+export const deleteCacheItem = async (key: string): Promise<boolean> => {
+  try {
+    const actualKey = key.match(/\((.*?)\)/)?.[1];
+    
+    if (!actualKey) {
+      toast.error("Invalid cache key format");
+      return false;
+    }
+    
+    const response = await fetch(`http://127.0.0.1:8000/retrievers/tax-rag/cache-items/${encodeURIComponent(actualKey)}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    toast.success("Cache item deleted successfully");
+    return true;
+  } catch (error) {
+    console.error("Error deleting cache item:", error);
+    toast.error("Failed to delete cache item");
+    return false;
+  }
+};
+
 // Helper function to format seconds into human-readable duration
 export const formatDuration = (seconds: number): string => {
   if (!seconds || isNaN(seconds)) return "N/A";
