@@ -36,7 +36,7 @@ export interface CacheData {
 
 export const fetchCacheData = async (): Promise<CacheData> => {
   try {
-    const response = await fetch("http://127.0.0.1:8000/retrievers/tax-rag/cache-items", {
+    const response = await fetch("'https://ml-apps-dev.siemens-healthineers.com/tax-websocket-bot/retrievers/tax-rag/cache-items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
