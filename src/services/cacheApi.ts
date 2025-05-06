@@ -36,7 +36,7 @@ export interface CacheData {
 
 export const fetchCacheData = async (): Promise<CacheData> => {
   try {
-    const response = await fetch("'https://ml-apps-dev.siemens-healthineers.com/tax-websocket-bot/retrievers/tax-rag/cache-items", {
+    const response = await fetch("https://ml-apps-dev.siemens-healthineers.com/tax-websocket-bot/retrievers/tax-rag/cache-items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export const deleteCacheItem = async (key: string): Promise<boolean> => {
       return false;
     }
     
-    const response = await fetch(`https://github.com/mananyadv/cache-insight-dashboard.git/${encodeURIComponent(actualKey)}`, {
+    const response = await fetch(`https://ml-apps-dev.siemens-healthineers.com/tax-websocket-bot/retrievers/tax-rag/cache-items/${encodeURIComponent(actualKey)}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
