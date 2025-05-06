@@ -65,7 +65,7 @@ export const deleteCacheItem = async (key: string): Promise<boolean> => {
       return false;
     }
     
-    const response = await fetch(`http://127.0.0.1:8000/retrievers/tax-rag/cache-items/${encodeURIComponent(actualKey)}`, {
+    const response = await fetch(`https://github.com/mananyadv/cache-insight-dashboard.git/${encodeURIComponent(actualKey)}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
